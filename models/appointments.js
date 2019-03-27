@@ -7,12 +7,8 @@ module.exports = function(sequelize, DataTypes) {
         len: [1]
       }
     },
-    age: {
-      type: DataTypes.INTEGER,
-
-      validate: {
-        len: [1, 3]
-      }
+    DOB: {
+      type: DataTypes.STRING
     },
     reasonForVisit: {
       type: DataTypes.STRING,
@@ -22,6 +18,10 @@ module.exports = function(sequelize, DataTypes) {
         len: [1, 160]
       }
     },
+    allergies: {
+      type: DataTypes.STRING,
+      defaultValue: "None"
+    },
     isPresent: {
       type: DataTypes.BOOLEAN,
       defaultValue: 0
@@ -29,7 +29,7 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   Appointment.associate = function(models) {
-    Appointment.belongTo(models.Doctor, {
+    Appointment.belongsTo(models.Doctor, {
       foreignKey: {
         allowNull: false
       }
