@@ -55,5 +55,5 @@ $(function() {
     $.post("/api/appointments", appointmentData, function() {
       console.log("appointment added");
     });
-  });;
+  });
 });
