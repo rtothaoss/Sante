@@ -18,29 +18,40 @@
 
   $('#patientSubmit').on('click', function (event) {
     event.preventDefault();
-    
+
     var searchedName = $('#routeName').val().trim();
-    
+
     searchedName = searchedName.replace(/\s+/g, "").toLowerCase();
-    
+
     var checkedIn = {
       isPresent: 1
     }
 
-    $.post('/api/appointments/' + searchedName, checkedIn).then(function(data){
+    $.post('/api/appointments/' + searchedName, checkedIn).then(function (data) {
       console.log(data)
+      if (data[0] === 1) {
+        Swal.fire(
+          'All Checked In!',
+          'You will be seen soon',
+          'success'
+        )
+        $('#routeName').val('')
+      } else {
+        Swal.fire({
+          type: 'error',
+          title: 'Oops...',
+          text: 'Something went wrong!',
+        })
+        $('#routeName').val('')
+      }
     })
-    
-  Swal.fire(
-  'All Checked In!',
-  'You will be seen soon',
-  'success'
-)
 
 
-  }); 
-    
-    
-    
-   
+
+
+  });
+
+
+
+
 </script>
