@@ -1,26 +1,105 @@
 var db = require("../models");
 
 module.exports = function(app) {
-  // Get all examples
-  app.get("/api/examples", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
-      res.json(dbExamples);
+  //GET for appointment
+  //GET for appointment
+  app.get("/api/appointments", function(req, res) {
+    db.Appointment.findAll({}).then(function(dbAppointment) {
+      res.json(dbAppointment);
     });
   });
 
-  // Create a new example
-  app.post("/api/examples", function(req, res) {
-    db.Example.create(req.body).then(function(dbExample) {
-      res.json(dbExample);
+  //GET for appointment by ID
+  //GET for appointment by ID
+  app.get("/api/appointments/:id", function(req, res) {
+    db.Appointment.findOne({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(dbAppointment) {
+      res.json(dbAppointment);
     });
   });
 
-  // Delete an example by id
-  app.delete("/api/examples/:id", function(req, res) {
-    db.Example.destroy({ where: { id: req.params.id } }).then(function(
-      dbExample
-    ) {
-      res.json(dbExample);
+  //POST for appointment
+  //POST for appointment
+  app.post("/api/appointments", function(req, res) {
+    db.Appointment.create(req.body).then(function(dbAppointment) {
+      res.json(dbAppointment);
+    });
+  });
+
+  //PUT for isPresent on appointment
+  app.post("/api/appointments/:routeName", function(req, res) {
+    console.log(req.body);
+    db.Appointment.update(req.body, {
+      where: {
+        routeName: req.params.routeName
+      }
+    }).then(function(dbAppointment) {
+      res.json(dbAppointment);
+    });
+  });
+
+  //GET for patient
+  //GET for patient
+  app.get("/api/patients", function(req, res) {
+    db.Patient.findAll({}).then(function(dbPatient) {
+      res.json(dbPatient);
+    });
+  });
+
+  //GET for one patient
+  //GET for one patient
+  app.get("/api/patients/:id", function(req, res) {
+    db.Patient.findOne({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(dbPatient) {
+      res.json(dbPatient);
+    });
+  });
+
+  //POST for patientDetails
+  //POST for patientDetails
+  app.post("/api/patients", function(req, res) {
+    db.Patient.create(req.body).then(function(dbPatient) {
+      res.json(dbPatient);
+    });
+  });
+
+  //GET for doctors
+  //GET for doctors
+  app.get("/api/doctors", function(req, res) {
+    db.Doctor.findAll({}).then(function(dbDoctor) {
+      res.json(dbDoctor);
+    });
+  });
+
+  //POST for doctors
+  //POST for doctors
+  app.post("/api/doctors", function(req, res) {
+    db.Doctor.create(req.body).then(function(dbPatient) {
+      res.json(dbPatient);
+    });
+  });
+
+  app.post("/auth", function(req, res) {
+    db.Account.findAll({
+      where: {
+        username: req.body.username,
+        password: req.body.password
+      }
+    }).then(function(results) {
+      if (results.length > 0) {
+        req.session.loggedin = true;
+        res.redirect("/home");
+        console.log(req.session.loggedin);
+      } else {
+        console.log(req.session);
+        res.redirect("/");
+      }
     });
   });
 };
