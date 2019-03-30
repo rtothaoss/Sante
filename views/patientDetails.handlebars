@@ -1,1 +1,194 @@
-<h1>Patient Details</h1>
+<!DOCTYPE html>
+<html>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/patients">Patients</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/appointments">Appointments</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/waitingroom">Waiting Room</a>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/checkin">Check In</a>
+            </li>
+    </div>
+</nav>
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">Welcome to DOC'S office </h1>
+            <p class="lead">Patient Details Page.</p>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                    <select class="custom-select">
+                        <option selected>Patient Select</option>
+                        <option value="1">John Smith</option>
+                        <option value="2">Jane Doe</option>
+                        <option value="3">Rick Sanches</option>
+                    </select>
+                </li>
+                <li class="nav-item active">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter"
+                        id="patientBtn">
+                        Patient Details
+                    </button>
+                </li>
+                <li class="nav-item">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter"
+                        id="historyBtn">
+                        Patient History
+                    </button>
+                </li>
+                <li class="nav-item">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter"
+                        id="myBtn">
+                        DOC's Notes
+                    </button>
+                </li>
+                <li>
+                    <button type="button" class="btn btn-outline-success"> + New Patient</button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="patientBtn" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle">Patient:</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Patient Details Tab</p>
+                    <ul>NAME: John Smith</ul>
+                    <ul>DATE OF BIRTH:01/01/2001</ul>
+                    <ul>EMERGENCY CONTACT:214-123-4567</ul>
+                    <ul>ALLEGIES: Latex</ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="historyBtn" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle">Patient:</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Patient History Tab</p>
+                    <ul>ID: (from table in DB)</ul>
+                    <ul>NAME: John Smith</ul>
+                    <ul>CHIEF COMPLAINT: headache</ul>
+                    <ul>HISTORY OF PRESENT ILLNESS:unknown</ul>
+                    <ul>SURGICAL HISTORY:bjkahs</ul>
+                    <ul>MEDICAL HISTORY:akdfjre</ul>
+                    <ul>MEDICATIONS: Tylenol, Morphine</ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="notesBtn" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle">Patient:</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group"></div>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+                </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {// patient details modal
+            $("#patientBtn").click(function () {
+                $("#exampleModalCenter").modal();
+            });
+        });
+        $(document).ready(function () {// patient history modal
+            $("#historyBtn").click(function () {
+                $("#exampleModalCenter").modal();
+            });
+        });
+        $(document).ready(function () {// DOC's Notes modal
+            $("#notesBtn").click(function () {
+                $("#exampleModalCenter").modal();
+            });
+        });
+
+
+
+
+    </script>
+
+</body>
+
+</html>
