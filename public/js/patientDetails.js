@@ -16,4 +16,40 @@ $(function() {
       return listOption;
     }
   });
+
+  var patientID;
+
+  $("#patientBtn").on("click", function() {
+    event.preventDefault();
+    $(".patientStuff").empty();
+
+    patientID = $("#patient").val();
+
+    $.get("/api/patients/" + patientID, function(data) {
+      console.log(data);
+      var patientDetailsDiv = $("<div>");
+      patientDetailsDiv.addClass("patientDetailsDiv");
+      patientDetailsDiv.append("Patient Name: " + data.name + "<br>");
+      patientDetailsDiv.append("Date of Birth: " + data.DOB + "<br>");
+      patientDetailsDiv.append(
+        "Emergency Contact: " + data.emergencyContact + "<br>"
+      );
+      patientDetailsDiv.append("Allergies: " + data.allergies + "<br>");
+      $(".patientStuff").append(patientDetailsDiv);
+    });
+  });
+
+  $("#historyBtn").on("click", function() {
+    event.preventDefault();
+    $(".patientStuff").empty();
+
+    patientID = $("#patient").val();
+
+    $.get("/api/patients/" + patientID, function(data) {
+      console.log(data);
+      var patientHistoryDiv = $("<div>");
+      patientHistoryDiv.append("Patient History: " + data.history);
+      $(".patientStuff").append(patientHistoryDiv);
+    });
+  });
 });

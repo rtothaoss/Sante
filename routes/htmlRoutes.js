@@ -1,42 +1,44 @@
 var db = require("../models");
 
 module.exports = function(app) {
+  //LOGIN PAGE
   app.get("/", function(req, res) {
-    db.Account.findAll({}).then(function(results) {
-      res.render("login", results);
-    });
+    res.render("login");
   });
 
+  //OPFORM
+  app.get("/opform", function(req, res) {
+    if (req.session.loggedin) {
+      res.render("opform");
+    } else {
+      res.render("login");
+    }
+  });
+  //HOME PAGE
   app.get("/home", function(req, res) {
-    db.Appointment.findAll({}).then(function(results) {
-      if (req.session.loggedin) {
-        res.render("home", results);
-      } else {
-        res.render("login");
-      }
-    });
+    if (req.session.loggedin) {
+      res.render("home");
+    } else {
+      res.render("login");
+    }
   });
 
   //patientDetails Page
   app.get("/patients", function(req, res) {
-    db.Patient.findAll({}).then(function(results) {
-      if (req.session.loggedin) {
-        res.render("patientDetails", results);
-      } else {
-        res.render("login");
-      }
-    });
+    if (req.session.loggedin) {
+      res.render("patientDetails");
+    } else {
+      res.render("login");
+    }
   });
 
   //appointments Page
   app.get("/appointments", function(req, res) {
-    db.Appointment.findAll({}).then(function(results) {
-      if (req.session.loggedin) {
-        res.render("appointments", results);
-      } else {
-        res.render("login");
-      }
-    });
+    if (req.session.loggedin) {
+      res.render("appointments");
+    } else {
+      res.render("login");
+    }
   });
 
   //checkin Page
