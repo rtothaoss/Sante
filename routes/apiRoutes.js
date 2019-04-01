@@ -102,4 +102,28 @@ module.exports = function(app) {
       }
     });
   });
+
+  app.get("/api/opform", function(req, res) {
+    db.Postop.findAll({ include: [db.Patient] }).then(function(dbPostop) {
+      res.json(dbPostop);
+    });
+  });
+
+  app.get("/api/opform/:patientId", function(req, res) {
+    console.log(req.params);
+    db.Postop.findOne({
+      include: [db.Patient],
+      where: {
+        patientId: req.params.patientId
+      }
+    }).then(function(dbPostop) {
+      res.json(dbPostop);
+    });
+  });
+
+  app.post("/api/opform/", function(req, res) {
+    db.Postop.create(req.body).then(function(dbPostop) {
+      res.json(dbPostop);
+    });
+  });
 };

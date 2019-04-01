@@ -20,13 +20,5 @@ module.exports = function(sequelize, DataTypes) {
     pictureURL: DataTypes.STRING
   });
 
-  // Patient.associate = function(models) {
-  //   Patient.belongsTo(models.Doctor, {
-  //     foreignKey: {
-  //       allowNull: false
-  //     }
-  //   });
-  //   Patient.hasMany(models.Appointment);
-  // };
   return Patient;
 };

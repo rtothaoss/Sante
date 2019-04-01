@@ -52,4 +52,37 @@ $(function() {
       $(".patientStuff").append(patientHistoryDiv);
     });
   });
+
+  $("#opFormBtn").on("click", function() {
+    patientID = $("#patient").val();
+    $(".patientStuff").empty();
+
+    $.get("/api/opform/" + patientID, function(data) {
+      console.log(data);
+      if (!data) {
+        console.log(patientID);;
+        window.location.href = "/opform/?patientID=" + patientID;
+      } else {
+        var patientOpFormDiv = $("<div>");
+        patientOpFormDiv.append("Name: " + data.Patient.name + "<br>");
+        patientOpFormDiv.append("PatientID: " + data.PatientId + "<br>");
+        patientOpFormDiv.append("Date of Birth: " + data.Patient.DOB + "<br>");
+        patientOpFormDiv.append(
+          "Date of Service: " + data.DateOfService + "<br>"
+        );
+        patientOpFormDiv.append("Surgeon Name: " + data.SurgeonName + "<br>");
+        patientOpFormDiv.append(
+          "Pre-Operative Diagnosis: " + data.PreOpDiag + "<br>"
+        );
+        patientOpFormDiv.append(
+          "Post-Operative Diagnosis: " + data.PostOpDiag + "<br>"
+        );
+        patientOpFormDiv.append("Operation: " + data.Operation + "<br>");
+        patientOpFormDiv.append(
+          "Findings of the Operation: " + data.Findings + "<br>"
+        );
+        $(".patientStuff").append(patientOpFormDiv);
+      }
+    });
+  });
 });
