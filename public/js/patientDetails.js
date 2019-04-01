@@ -141,11 +141,11 @@ $(function() {
       $.post("/api/patients", newPatientData, function() {
         console.log("new patient added");
         Swal.fire({
-          type: 'success',
-          text: 'Added New Patient!',
-        }).then((result) => {
+          type: "success",
+          text: "Added New Patient!"
+        }).then(function() {
           location.reload();
-        })
+        });
       });
     });
   });
