@@ -1,19 +1,8 @@
 module.exports = function(sequelize, DataTypes) {
   var Patient = sequelize.define("Patient", {
-    name: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [1]
-      }
-    },
-    DOB: {
-      type: DataTypes.STRING
-    },
-    allergies: {
-      type: DataTypes.STRING,
-      defaultValue: "None"
-    },
+    name: DataTypes.STRING,
+    DOB: DataTypes.STRING,
+    allergies: DataTypes.STRING,
     history: DataTypes.TEXT,
     doctorNotes: DataTypes.TEXT,
     emergencyContact: DataTypes.STRING,

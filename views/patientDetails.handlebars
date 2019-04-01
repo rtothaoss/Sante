@@ -28,160 +28,199 @@
 </nav>
 
 
-    <div class="jumbotron jumbotron-fluid">
-        <div class="container">
-            <h1 class="display-4">Welcome to DOC'S office </h1>
-            <p class="lead">Patient Details Page.</p>
-        </div>
-    </div>
-
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#"></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav">
-                <li class="nav-item dropdown">
-                    <select class="custom-select" id='patient'>
-                    </select>
-                </li>
-                <li class="nav-item active">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter"
-                        id="patientBtn">
-                        Patient Details
-                    </button>
-                </li>
-                <li class="nav-item">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter"
-                        id="historyBtn">
-                        Patient History
-                    </button>
-                </li>
-                <li class="nav-item">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter"
-                        id="opFormBtn">
-                        Op Form
-                    </button>
-                </li>
-                <li>
-                    <button type="button" class="btn btn-outline-success"> + New Patient</button>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
-
-    <!-- Modal -->
-    <div class="modal fade" id="patientBtn" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalCenterTitle">Patient:</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p>Patient Details Tab</p>
-                    <ul>NAME: John Smith</ul>
-                    <ul>DATE OF BIRTH:01/01/2001</ul>
-                    <ul>EMERGENCY CONTACT:214-123-4567</ul>
-                    <ul>ALLEGIES: Latex</ul>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="historyBtn" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalCenterTitle">Patient:</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p>Patient History Tab</p>
-                    <ul>ID: (from table in DB)</ul>
-                    <ul>NAME: John Smith</ul>
-                    <ul>CHIEF COMPLAINT: headache</ul>
-                    <ul>HISTORY OF PRESENT ILLNESS:unknown</ul>
-                    <ul>SURGICAL HISTORY:bjkahs</ul>
-                    <ul>MEDICAL HISTORY:akdfjre</ul>
-                    <ul>MEDICATIONS: Tylenol, Morphine</ul>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="notesBtn" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalCenterTitle">Patient:</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group"></div>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
-                </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-        </div>
-    </div>
-    </div>
-    <div class='container'>
-    <div class='patientStuff'>
-
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-4">Welcome to DOC'S office </h1>
+        <p class="lead">Patient Details Page.</p>
     </div>
 </div>
-    
+<div class='container'>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+                <select class="custom-select" id='patient'>
+                </select>
+            </li>
+            <li class="nav-item active">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter"
+                    id="patientBtn">
+                    Patient Details
+                </button>
+            </li>
+            <li class="nav-item">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter"
+                    id="historyBtn">
+                    Patient History
+                </button>
+            </li>
+            <li class="nav-item">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter"
+                    id="opFormBtn">
+                    Op Form
+                </button>
+            </li>
+            <li>
+                <button type="button" class="btn btn-outline-success" id='newPatientBtn'> + New Patient</button>
+            </li>
+        </ul>
+    </div>
+</nav>
+</div>
 
-    <script>
-        $(document).ready(function () {// patient details modal
-            $("#patientBtn").click(function () {
-                $("#exampleModalCenter").modal();
-            });
+<!-- Modal -->
+<div class="modal fade" id="patientBtn" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Patient:</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Patient Details Tab</p>
+                <ul>NAME: John Smith</ul>
+                <ul>DATE OF BIRTH:01/01/2001</ul>
+                <ul>EMERGENCY CONTACT:214-123-4567</ul>
+                <ul>ALLEGIES: Latex</ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="historyBtn" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Patient:</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Patient History Tab</p>
+                <ul>ID: (from table in DB)</ul>
+                <ul>NAME: John Smith</ul>
+                <ul>CHIEF COMPLAINT: headache</ul>
+                <ul>HISTORY OF PRESENT ILLNESS:unknown</ul>
+                <ul>SURGICAL HISTORY:bjkahs</ul>
+                <ul>MEDICAL HISTORY:akdfjre</ul>
+                <ul>MEDICATIONS: Tylenol, Morphine</ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="notesBtn" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Patient:</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group"></div>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+            </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+    </div>
+</div>
+</div>
+<div class='container'>
+    <div class='patientStuff'>
+    </div>
+    <div class='newPatientForm hidden'>
+        <div class='container'>
+            <form>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputEmail4">Patient Name</label>
+                        <input type="text" class="form-control" id="newPatientName">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputPassword4">Date of Birth</label>
+                        <input type="text" class="form-control" id="newPatientDOB">
+                    </div>
+                </div>
+                <div class='form-row'>
+                    <div class="form-group col-md-6">
+                        <label for="inputAddress">Allergies</label>
+                        <input type="text" class="form-control" id="newPatientAllergies">
+                    </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputCity">Emergency Contact</label>
+                            <input type="text" class="form-control" id="newPatientEmergency">
+                        </div>
+                    </div>
+                    <div class='form-row'>
+                    <div class="form-group col-md-6">
+                        <label for="inputAddress">Picture URL</label>
+                        <input type="text" class="form-control" id="newPatientPicture">
+                    </div>
+                    </div>
+                    <div class="form-row">
+                        <label for="exampleFormControlTextarea1">Doctor Notes</label>
+                        <textarea class="form-control" id="newPatientNotes" rows="3"></textarea>
+                    </div>
+                    <div class='form-row'>
+                        <label for="exampleFormControlTextarea1">History</label>
+                        <textarea class="form-control" id="newPatientHistory" rows="3"></textarea>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary" id='patientSubmitBtn'>Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function () {// patient details modal
+        $("#patientBtn").click(function () {
+            $("#exampleModalCenter").modal();
         });
-        $(document).ready(function () {// patient history modal
-            $("#historyBtn").click(function () {
-                $("#exampleModalCenter").modal();
-            });
+    });
+    $(document).ready(function () {// patient history modal
+        $("#historyBtn").click(function () {
+            $("#exampleModalCenter").modal();
         });
-        $(document).ready(function () {// DOC's Notes modal
-            $("#notesBtn").click(function () {
-                $("#exampleModalCenter").modal();
-            });
+    });
+    $(document).ready(function () {// DOC's Notes modal
+        $("#notesBtn").click(function () {
+            $("#exampleModalCenter").modal();
         });
+    });
 
 
 
 
-    </script>
-
-
-
+</script>
