@@ -60,7 +60,7 @@ $(function() {
     $.get("/api/opform/" + patientID, function(data) {
       console.log(data);
       if (!data) {
-        console.log(patientID);;
+        console.log(patientID);
         window.location.href = "/opform/?patientID=" + patientID;
       } else {
         var patientOpFormDiv = $("<div>");

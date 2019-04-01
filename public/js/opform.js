@@ -34,7 +34,7 @@ $(function() {
     };
 
     $.post("/api/opform", PostOpData, function() {
-      console.log("appointment added");;
+      console.log("appointment added");
     });
 
     window.history.back();
