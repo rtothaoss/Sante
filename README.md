@@ -1,4 +1,4 @@
-# DOCS-
+# Sante-
 
 *A healthcare system that allows patients to sign in and doctors can see who is presently waiting along with other information like their case details.* 
 
