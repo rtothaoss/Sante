@@ -18,7 +18,8 @@ $(function() {
   });
 
   var patientID;
-
+  //PATIENT DETAILS BUTTON
+  //PATIENT DETAILS BUTTON
   $("#patientBtn").on("click", function() {
     event.preventDefault();
     $(".patientStuff").empty();
@@ -40,6 +41,8 @@ $(function() {
     });
   });
 
+  //PATIENT HISTORY BUTTON
+  //PATIENT HISTORY BUTTON
   $("#historyBtn").on("click", function() {
     event.preventDefault();
     $(".patientStuff").empty();
@@ -48,12 +51,69 @@ $(function() {
     patientID = $("#patient").val();
 
     $.get("/api/patients/" + patientID, function(data) {
-      console.log(data);
+      var updatedAt = data.updatedAt;
+      var regex = /(\d{4}-\d{2}-\d{1,2}).*/;
+      var newUpdatedAt = updatedAt.match(regex);
+
       var patientHistoryDiv = $("<div>");
-      patientHistoryDiv.append("Patient History: " + data.history);
+      patientHistoryDiv.append(newUpdatedAt[1] + "<br>");
+      patientHistoryDiv.append(
+        "<b>" + "Patient History: " + "</b>" + data.history
+      );
       $(".patientStuff").append(patientHistoryDiv);
     });
   });
+
+  //PATIENT NOTES BUTTON
+  //PATIENT NOTES BUTTON
+
+  $("#patientNotesBtn").on("click", function() {
+    patientID = $("#patient").val();
+    $(".patientStuff").empty();
+    $(".newPatientForm").addClass("hidden");
+    getPatientNotes();
+
+    function getPatientNotes() {
+      $.get("/api/patients/" + patientID, function(data) {
+        if (!data.doctorNotes) {
+          $(".newNotesForm").removeClass("hidden");
+
+          $("#patientNotesSubmitBtn").on("click", function() {
+            event.preventDefault();
+            var doctorNotes = $("#doctorNotesText")
+              .val()
+              .trim();
+
+            var newNotes = {
+              doctorNotes: doctorNotes
+            };
+
+            $.ajax({
+              method: "PUT",
+              url: "/api/patients/" + patientID,
+              data: newNotes
+            }).then(function() {
+              console.log("updated notes");
+              $(".newNotesForm").addClass("hidden");
+              getPatientNotes();
+            });
+          });
+        } else {
+          var updatedAt = data.updatedAt;
+          var regex = /(\d{4}-\d{2}-\d{1,2}).*/;
+          var newUpdatedAt = updatedAt.match(regex);
+
+          var patientNotesDiv = $("<div>");
+          patientNotesDiv.append(newUpdatedAt[1] + "<br>");
+          patientNotesDiv.append("<b>" + "Notes: " + "</b>" + data.doctorNotes);
+          $(".patientStuff").append(patientNotesDiv);
+        }
+      });
+    }
+  });
+
+  //OP FORM BUTTON
+  //OP FORM BUTTON
 
   $("#opFormBtn").on("click", function() {
     patientID = $("#patient").val();
@@ -88,6 +148,9 @@ $(function() {
       }
     });
   });
+
+  //NEW PATIENT BUTTON
+  //NEW PATIENT BUTTON
 
   $("#newPatientBtn").on("click", function() {
     $(".patientStuff").empty();

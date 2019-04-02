@@ -59,13 +59,19 @@
                     Patient History
                 </button>
             </li>
+             <li class="nav-item">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter"
+                    id="patientNotesBtn">
+                    Patient Notes
+                </button>
+            </li>
+            <li>
             <li class="nav-item">
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter"
                     id="opFormBtn">
                     Op Form
                 </button>
             </li>
-            <li>
                 <button type="button" class="btn btn-outline-success" id='newPatientBtn'> + New Patient</button>
             </li>
         </ul>
@@ -157,6 +163,18 @@
 <div class='container'>
     <div class='patientStuff'>
     </div>
+    <div class='newNotesForm hidden'>
+        <div class='container'>
+            <form>
+                    <div class="form-row">
+                        <label for="exampleFormControlTextarea1">Doctor Notes</label>
+                        <textarea class="form-control" id="doctorNotesText" rows="3"></textarea>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary" id='patientNotesSubmitBtn'>Submit</button>
+            </form>
+        </div>
     <div class='newPatientForm hidden'>
         <div class='container'>
             <form>
@@ -200,7 +218,7 @@
             </form>
         </div>
     </div>
-</div>
+
 
 
 <script>

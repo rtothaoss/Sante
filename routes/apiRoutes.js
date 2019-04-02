@@ -61,6 +61,18 @@ module.exports = function(app) {
     });
   });
 
+  //PUT for one patient
+  //PUT for one patient
+  app.put("/api/patients/:id", function(req, res) {
+    db.Patient.update(req.body, {
+      where: {
+        id: req.params.id
+      }
+    }).then(function(dbPatient) {
+      res.json(dbPatient);
+    });
+  });
+
   //POST for patientDetails
   //POST for patientDetails
   app.post("/api/patients", function(req, res) {
