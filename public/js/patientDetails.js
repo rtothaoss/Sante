@@ -22,6 +22,7 @@ $(function() {
   $("#patientBtn").on("click", function() {
     event.preventDefault();
     $(".patientStuff").empty();
+    $(".newPatientForm").addClass("hidden");
 
     patientID = $("#patient").val();
 
@@ -42,6 +43,7 @@ $(function() {
   $("#historyBtn").on("click", function() {
     event.preventDefault();
     $(".patientStuff").empty();
+    $(".newPatientForm").addClass("hidden");
 
     patientID = $("#patient").val();
 
@@ -56,6 +58,7 @@ $(function() {
   $("#opFormBtn").on("click", function() {
     patientID = $("#patient").val();
     $(".patientStuff").empty();
+    $(".newPatientForm").addClass("hidden");
 
     $.get("/api/opform/" + patientID, function(data) {
       console.log(data);
@@ -83,6 +86,67 @@ $(function() {
         );
         $(".patientStuff").append(patientOpFormDiv);
       }
+    });
+  });
+
+  $("#newPatientBtn").on("click", function() {
+    $(".patientStuff").empty();
+    $(".newPatientForm").removeClass("hidden");
+    event.preventDefault();
+
+    $("#patientSubmitBtn").on("click", function() {
+      event.preventDefault();
+
+      var newName = $("#newPatientName")
+        .val()
+        .trim();
+
+      var dob = $("#newPatientDOB")
+        .val()
+        .trim();
+
+      var allergies = $("#newPatientAllergies")
+        .val()
+        .trim();
+
+      var emergencyContact = $("#newPatientEmergency")
+        .val()
+        .trim();
+
+      var picture = $("#newPatientPicture")
+        .val()
+        .trim();
+
+      var doctorNotes = $("#newPatientNotes")
+        .val()
+        .trim();
+
+      var history = $("#newPatientHistory")
+        .val()
+        .trim();
+
+      console.log(newName);
+      console.log(dob);
+
+      var newPatientData = {
+        name: newName,
+        DOB: dob,
+        allergies: allergies,
+        history: history,
+        doctorNotes: doctorNotes,
+        emergencyContact: emergencyContact,
+        pictureURL: picture
+      };
+
+      $.post("/api/patients", newPatientData, function() {
+        console.log("new patient added");
+        Swal.fire({
+          type: "success",
+          text: "Added New Patient!"
+        }).then(function() {
+          location.reload();
+        });
+      });
     });
   });
 });
