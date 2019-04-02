@@ -31,14 +31,21 @@ $(function() {
 
     $.get("/api/patients/" + patientID, function(data) {
       console.log(data);
+
       var patientDetailsDiv = $("<div>");
       patientDetailsDiv.addClass("patientDetailsDiv");
-      patientDetailsDiv.append("Patient Name: " + data.name + "<br>");
-      patientDetailsDiv.append("Date of Birth: " + data.DOB + "<br>");
       patientDetailsDiv.append(
-        "Emergency Contact: " + data.emergencyContact + "<br>"
+        "<b>" + "Patient Name: " + "</b>" + data.name + "<br>"
       );
-      patientDetailsDiv.append("Allergies: " + data.allergies + "<br>");
+      patientDetailsDiv.append(
+        "<b>" + "Date of Birth: " + "</b>" + data.DOB + "<br>"
+      );
+      patientDetailsDiv.append(
+        "<b>" + "Emergency Contact: " + "</b>" + data.emergencyContact + "<br>"
+      );
+      patientDetailsDiv.append(
+        "<b>" + "Allergies: " + "</b>" + data.allergies + "<br>"
+      );
       $(".patientStuff").append(patientDetailsDiv);
     });
   });
@@ -92,19 +99,6 @@ $(function() {
         }
       });
     }
-
-    // $.get("/api/patients/" + patientID, function(data) {
-    //   var updatedAt = data.updatedAt;
-    //   var regex = /(\d{4}-\d{2}-\d{1,2}).*/;
-    //   var newUpdatedAt = updatedAt.match(regex);
-
-    //   var patientHistoryDiv = $("<div>");
-    //   patientHistoryDiv.append(newUpdatedAt[1] + "<br>");
-    //   patientHistoryDiv.append(
-    //     "<b>" + "Patient History: " + "</b>" + data.history
-    //   );
-    //   $(".patientStuff").append(patientHistoryDiv);
-    // });
   });
 
   //PATIENT NOTES BUTTON
@@ -173,22 +167,40 @@ $(function() {
         window.location.href = "/opform/?patientID=" + patientID;
       } else {
         var patientOpFormDiv = $("<div>");
-        patientOpFormDiv.append("Name: " + data.Patient.name + "<br>");
-        patientOpFormDiv.append("PatientID: " + data.PatientId + "<br>");
-        patientOpFormDiv.append("Date of Birth: " + data.Patient.DOB + "<br>");
         patientOpFormDiv.append(
-          "Date of Service: " + data.DateOfService + "<br>"
-        );
-        patientOpFormDiv.append("Surgeon Name: " + data.SurgeonName + "<br>");
-        patientOpFormDiv.append(
-          "Pre-Operative Diagnosis: " + data.PreOpDiag + "<br>"
+          "<b>" + "Name: " + "</b>" + data.Patient.name + "<br>"
         );
         patientOpFormDiv.append(
-          "Post-Operative Diagnosis: " + data.PostOpDiag + "<br>"
+          "<b>" + "PatientID: " + "</b>" + data.PatientId + "<br>"
         );
-        patientOpFormDiv.append("Operation: " + data.Operation + "<br>");
         patientOpFormDiv.append(
-          "Findings of the Operation: " + data.Findings + "<br>"
+          "<b>" + "Date of Birth: " + "</b>" + data.Patient.DOB + "<br>"
+        );
+        patientOpFormDiv.append(
+          "<b>" + "Date of Service: " + "</b>" + data.DateOfService + "<br>"
+        );
+        patientOpFormDiv.append(
+          "<b>" + "Surgeon Name: " + "</b>" + data.SurgeonName + "<br>"
+        );
+        patientOpFormDiv.append(
+          "<b>" + "Pre-Operative Diagnosis: " + "</b>" + data.PreOpDiag + "<br>"
+        );
+        patientOpFormDiv.append(
+          "<b>" +
+            "Post-Operative Diagnosis: " +
+            "</b>" +
+            data.PostOpDiag +
+            "<br>"
+        );
+        patientOpFormDiv.append(
+          "<b>" + "Operation: " + "</b>" + data.Operation + "<br>"
+        );
+        patientOpFormDiv.append(
+          "<b>" +
+            "Findings of the Operation: " +
+            "</b>" +
+            data.Findings +
+            "<br>"
         );
         $(".patientStuff").append(patientOpFormDiv);
       }
