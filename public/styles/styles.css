@@ -6,3 +6,11 @@
   /* visibility: hidden; */
   display: none;
 }
+
+.patientForm {
+  margin-top: 20px;
+}
+
+.patientBtnStyling {
+  margin-left: 10px;
+}
