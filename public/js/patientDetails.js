@@ -24,6 +24,8 @@ $(function() {
     event.preventDefault();
     $(".patientStuff").empty();
     $(".newPatientForm").addClass("hidden");
+    $(".newNotesForm").addClass("hidden");
+    $(".newHistoryForm").addClass("hidden");
 
     patientID = $("#patient").val();
 
@@ -47,21 +49,62 @@ $(function() {
     event.preventDefault();
     $(".patientStuff").empty();
     $(".newPatientForm").addClass("hidden");
+    $(".newNotesForm").addClass("hidden");
 
     patientID = $("#patient").val();
+    getPatientHistory();
 
-    $.get("/api/patients/" + patientID, function(data) {
-      var updatedAt = data.updatedAt;
-      var regex = /(\d{4}-\d{2}-\d{1,2}).*/;
-      var newUpdatedAt = updatedAt.match(regex);
+    function getPatientHistory() {
+      $.get("/api/patients/" + patientID, function(data) {
+        console.log(data);
+        if (!data.history) {
+          $(".newHistoryForm").removeClass("hidden");
 
-      var patientHistoryDiv = $("<div>");
-      patientHistoryDiv.append(newUpdatedAt[1] + "<br>");
-      patientHistoryDiv.append(
-        "<b>" + "Patient History: " + "</b>" + data.history
-      );
-      $(".patientStuff").append(patientHistoryDiv);
-    });
+          $("#patientHistorySubmitBtn").on("click", function() {
+            event.preventDefault();
+            var history = $("#patientHistoryText")
+              .val()
+              .trim();
+
+            var newHistory = {
+              history: history
+            };
+
+            $.ajax({
+              method: "PUT",
+              url: "/api/patients/" + patientID,
+              data: newHistory
+            }).then(function() {
+              console.log("updated notes");
+              $(".newHistoryForm").addClass("hidden");
+              getPatientHistory();
+            });
+          });
+        } else {
+          var updatedAt = data.updatedAt;
+          var regex = /(\d{4}-\d{2}-\d{1,2}).*/;
+          var newUpdatedAt = updatedAt.match(regex);
+
+          var patientHistoryDiv = $("<div>");
+          patientHistoryDiv.append(newUpdatedAt[1] + "<br>");
+          patientHistoryDiv.append("<b>" + "History: " + "</b>" + data.history);
+          $(".patientStuff").append(patientHistoryDiv);
+        }
+      });
+    }
+
+    // $.get("/api/patients/" + patientID, function(data) {
+    //   var updatedAt = data.updatedAt;
+    //   var regex = /(\d{4}-\d{2}-\d{1,2}).*/;
+    //   var newUpdatedAt = updatedAt.match(regex);
+
+    //   var patientHistoryDiv = $("<div>");
+    //   patientHistoryDiv.append(newUpdatedAt[1] + "<br>");
+    //   patientHistoryDiv.append(
+    //     "<b>" + "Patient History: " + "</b>" + data.history
+    //   );
+    //   $(".patientStuff").append(patientHistoryDiv);
+    // });
   });
 
   //PATIENT NOTES BUTTON
@@ -71,6 +114,7 @@ $(function() {
     patientID = $("#patient").val();
     $(".patientStuff").empty();
     $(".newPatientForm").addClass("hidden");
+    $(".newHistoryForm").addClass("hidden");
     getPatientNotes();
 
     function getPatientNotes() {
@@ -119,6 +163,8 @@ $(function() {
     patientID = $("#patient").val();
     $(".patientStuff").empty();
     $(".newPatientForm").addClass("hidden");
+    $(".newNotesForm").addClass("hidden");
+    $(".newHistoryForm").addClass("hidden");
 
     $.get("/api/opform/" + patientID, function(data) {
       console.log(data);
@@ -155,6 +201,7 @@ $(function() {
   $("#newPatientBtn").on("click", function() {
     $(".patientStuff").empty();
     $(".newPatientForm").removeClass("hidden");
+    $(".newHistoryForm").addClass("hidden");
     event.preventDefault();
 
     $("#patientSubmitBtn").on("click", function() {
