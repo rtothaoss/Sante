@@ -1,6 +1,10 @@
 var db = require("../models");
 
 module.exports = function(app) {
+  app.get("/opform", function(req, res) {
+    res.render("opform");
+  });
+
   app.get("/", function(req, res) {
     db.Account.findAll({}).then(function(results) {
       res.render("login", results);
