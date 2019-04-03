@@ -138,4 +138,36 @@ module.exports = function(app) {
       res.json(dbPostop);
     });
   });
+
+  app.get("/api/patientHistory/:id", function(req, res) {
+    db.Patienthistory.findAll({
+      where: {
+        patientId: req.params.id
+      }
+    }).then(function(dbPatienthistory) {
+      res.json(dbPatienthistory);
+    });
+  });
+
+  app.post("/api/patientHistory", function(req, res) {
+    db.Patienthistory.create(req.body).then(function(dbPatienthistory) {
+      res.json(dbPatienthistory);
+    });
+  });
+
+  app.get("/api/patientNotes/:id", function(req, res) {
+    db.Patientnotes.findAll({
+      where: {
+        patientId: req.params.id
+      }
+    }).then(function(dbPatientnotes) {
+      res.json(dbPatientnotes);
+    });
+  });
+
+  app.post("/api/patientNotes", function(req, res) {
+    db.Patientnotes.create(req.body).then(function(dbPatienthistory) {
+      res.json(dbPatienthistory);
+    });
+  });
 };

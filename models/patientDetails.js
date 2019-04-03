@@ -3,8 +3,6 @@ module.exports = function(sequelize, DataTypes) {
     name: DataTypes.STRING,
     DOB: DataTypes.STRING,
     allergies: DataTypes.STRING,
-    history: DataTypes.TEXT,
-    doctorNotes: DataTypes.TEXT,
     emergencyContact: DataTypes.STRING,
     pictureURL: DataTypes.STRING
   });
