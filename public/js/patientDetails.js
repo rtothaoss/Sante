@@ -145,7 +145,6 @@ $(function() {
             notes: notes,
             patientId: patientID
           };
-          console.log(newNotes)
           $.ajax({
             method: "POST",
             url: "/api/patientNotes",
