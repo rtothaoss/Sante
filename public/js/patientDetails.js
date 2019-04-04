@@ -63,7 +63,7 @@ $(function() {
 
     function getHistory() {
       $.get("/api/patientHistory/" + patientID, function(data) {
-        console.log(data)
+        console.log(data);
         $(".patientStuff").empty();
         for (var i = 0; i < data.length; i++) {
           var updatedAt = data[i].updatedAt;
@@ -120,7 +120,7 @@ $(function() {
 
     function getNotes() {
       $.get("/api/patientNotes/" + patientID, function(data) {
-        console.log(data)
+        console.log(data);
         $(".patientStuff").empty();
         for (var i = 0; i < data.length; i++) {
           var updatedAt = data[i].updatedAt;
