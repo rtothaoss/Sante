@@ -59,9 +59,9 @@ $(function() {
     $(".newNotesForm").addClass("hidden");
 
     patientID = $("#patient").val();
-    getPatientHistory();
+    getHistory();
 
-    function getPatientHistory() {
+    function getHistory() {
       $.get("/api/patientHistory/" + patientID, function(data) {
         console.log(data);
         $(".patientStuff").empty();
@@ -77,33 +77,33 @@ $(function() {
           );
           $(".patientStuff").append(patientHistoryDiv);
         }
-        // if (!data.history) {
-        $(".newHistoryForm").removeClass("hidden");
-
-        $("#patientHistorySubmitBtn").on("click", function() {
-          event.preventDefault();
-          var history = $("#patientHistoryText")
-            .val()
-            .trim();
-
-          var newHistory = {
-            history: history,
-            patientId: patientID
-          };
-
-          $.ajax({
-            method: "POST",
-            url: "/api/patientHistory",
-            data: newHistory
-          }).then(function() {
-            console.log("updated notes");
-            // $(".newHistoryForm").addClass("hidden");
-            getPatientHistory();
-            $("#patientHistoryText").val("");
-          });
-        });
       });
     }
+    // if (!data.history) {
+    $(".newHistoryForm").removeClass("hidden");
+
+    $("#patientHistorySubmitBtn").on("click", function() {
+      event.preventDefault();
+      var history = $("#patientHistoryText")
+        .val()
+        .trim();
+
+      var newHistory = {
+        history: history,
+        patientId: patientID
+      };
+
+      $.ajax({
+        method: "POST",
+        url: "/api/patientHistory",
+        data: newHistory
+      }).then(function() {
+        console.log("updated notes");
+        // $(".newHistoryForm").addClass("hidden");
+        getHistory();
+        $("#patientHistoryText").val("");
+      });
+    });
   });
   //PATIENT NOTES BUTTON
   //PATIENT NOTES BUTTON
@@ -116,9 +116,9 @@ $(function() {
     $(".newHistoryForm").addClass("hidden");
 
     patientID = $("#patient").val();
-    getPatientNotes();
+    getNotes();
 
-    function getPatientNotes() {
+    function getNotes() {
       $.get("/api/patientNotes/" + patientID, function(data) {
         console.log(data);
         $(".patientStuff").empty();
@@ -132,32 +132,33 @@ $(function() {
           patientNotesDiv.append("<b>" + "Notes: " + "</b>" + data[i].notes);
           $(".patientStuff").append(patientNotesDiv);
         }
-        // if (!data.history) {
-        $(".newNotesForm").removeClass("hidden");
-
-        $("#patientNotesSubmitBtn").on("click", function() {
-          event.preventDefault();
-          var notes = $("#doctorNotesText")
-            .val()
-            .trim();
-
-          var newNotes = {
-            notes: notes,
-            patientId: patientID
-          };
-          $.ajax({
-            method: "POST",
-            url: "/api/patientNotes",
-            data: newNotes
-          }).then(function() {
-            console.log("updated notes");
-            // $(".newHistoryForm").addClass("hidden");
-            getPatientNotes();
-            $("#doctorNotesText").val("");
-          });
-        });
       });
     }
+
+    // if (!data.history) {
+    $(".newNotesForm").removeClass("hidden");
+
+    $("#patientNotesSubmitBtn").on("click", function() {
+      event.preventDefault();
+      var notes = $("#doctorNotesText")
+        .val()
+        .trim();
+
+      var newNotes = {
+        notes: notes,
+        patientId: patientID
+      };
+      $.ajax({
+        method: "POST",
+        url: "/api/patientNotes",
+        data: newNotes
+      }).then(function() {
+        console.log("updated notes");
+        // $(".newHistoryForm").addClass("hidden");
+        getNotes();
+        $("#doctorNotesText").val("");
+      });
+    });
   });
 
   //OP FORM BUTTON
@@ -171,7 +172,6 @@ $(function() {
     $(".newHistoryForm").addClass("hidden");
 
     $.get("/api/opform/" + patientID, function(data) {
-      console.log(data);
       if (!data) {
         console.log(patientID);
         window.location.href = "/opform/?patientID=" + patientID;
