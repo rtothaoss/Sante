@@ -4,7 +4,7 @@
 
 ![alt text](https://i.imgur.com/bFPTYQI.png 'sante patient page')
 
-#### Deployed page: https://apricot-sundae-19010.herokuapp.com/appointments
+#### Deployed page: [here](https://apricot-sundae-19010.herokuapp.com/appointments)
 
 ### Description
 
