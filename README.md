@@ -3,6 +3,9 @@
 *A healthcare system that allows patients to sign in and doctors can see who is presently waiting along with other information like their case details.* 
 
 ![alt text](https://i.imgur.com/bFPTYQI.png 'sante patient page')
+
+#### Deployed page: https://apricot-sundae-19010.herokuapp.com/appointments
+
 ### Description
 
 A patient is prompted with a login screen when they come into the office for surgery. The patient login is just a simple page for them check in. Doctors have a seperate page where they can see future patient cases and what patients are currently waiting. Doctors can then update patient details with their own information about how the surgery went. There will be a follow up page for each patient where patient details and that information the doctor has inputted. 
